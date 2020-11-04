@@ -1,3 +1,10 @@
+"""
+CONFIG
+
+Set default configure dict from yaml
+MAINTAINER: Ra Daesung (daesungra@gmail.com)
+"""
+
 import logging
 import yaml
 
