@@ -1,0 +1,11 @@
+# This file stores a series of secret values.
+# Maintainer. Ra Daesung (daesungra@gmail.com)
+
+
+VERSION: 0.0.1
+
+VAL:
+  django.secret-key:  # django secret key
+
+SETTING:
+  debug:  # boolean value for debug mode
