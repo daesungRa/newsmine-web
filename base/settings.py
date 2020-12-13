@@ -44,7 +44,11 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = []
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    'apps.core.apps.CoreConfig',
+    'apps.subscriptions.apps.SubscriptionsConfig',
+    'apps.users.apps.UsersConfig',
+]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
@@ -128,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = ''
+AUTH_USER_MODEL = 'users.User'
 
 MEDIA_ROOT = BASE_DIR / 'static'
 
