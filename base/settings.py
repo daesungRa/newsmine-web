@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'base.context_processors.default_variables',
             ],
         },
     },
@@ -145,3 +146,7 @@ EMAIL_PORT = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_FROM = ''
+
+DEFAULT_VARIABLES = {
+    'description': 'Receive fantastic email-sets you want regularly!',
+}
