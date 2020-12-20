@@ -11,3 +11,11 @@
 .footer-hr {
     margin-bottom: 23px;
 }
+
+/*
+ * Custom style
+ */
+
+.custom-tab {
+    padding-left: 6px;
+}
