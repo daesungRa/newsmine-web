@@ -1,0 +1,13 @@
+/*
+ * Footer style
+ */
+
+.footer {
+	color: #999;
+    text-align: center;
+    margin: 0 0 3rem 0;
+}
+
+.footer-hr {
+    margin-bottom: 23px;
+}
