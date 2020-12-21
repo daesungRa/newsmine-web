@@ -1,0 +1,18 @@
+<header class="header">
+    <div class="row">
+        <div class="col-md-7 header-title">
+            <h3>
+                <a href="{{ url }}/">{{ title }}</a>
+                <div class="header-subtitle">
+                    <span class="custom-tab"></span>
+                    |
+                    <span class="custom-tab"></span>
+                    {{ description_kor }}
+                </div>
+            </h3>
+        </div>
+        <div class="col-md-5">
+            {% include "partials/nav.html" %}
+        </div>
+    </div>
+</header>

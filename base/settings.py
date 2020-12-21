@@ -148,5 +148,8 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_FROM = ''
 
 DEFAULT_VARIABLES = {
-    'description': 'Receive fantastic email-sets you want regularly!',
+    'url': '#',
+    'title': 'Newsmine',
+    'description_kor': '나만의 뉴스를 정기적으로 받아보세요!',
+    'description_eng': 'Receive fantastic news-sets you want regularly!',
 }
