@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+        {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+        <link rel="stylesheet" type="text/css"
+              href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
@@ -19,7 +24,6 @@
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
               crossorigin="anonymous">
 
-        {% load static %}
         <!-- css style -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}">
         <!-- javascript -->
@@ -27,10 +31,10 @@
         <title>Newsmine: {% block page_title %}{% endblock page_title %}</title>
     </head>
 
-    <body>
+    <body class="newsmine-body">
         {% include "partials/header.html" %}
 
-        <div id="content">
+        <div class="newsmine-content">
             {% block content %}{% endblock %}
         </div>
 
