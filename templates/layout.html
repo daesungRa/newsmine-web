@@ -26,6 +26,10 @@
 
         <!-- css style -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}">
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 769px)"
+              href="{% static 'css/layout-web.css' %}">
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 0) and (max-width: 768px)"
+              href="{% static 'css/layout-mobile.css' %}">
         <!-- javascript -->
 
         <title>Newsmine: {% block page_title %}{% endblock page_title %}</title>
