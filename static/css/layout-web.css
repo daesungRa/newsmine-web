@@ -1,0 +1,28 @@
+/*
+ * Common style for web
+ * made by Daesung Ra (daesungra@gmail.com)
+ */
+
+#home-body-upper {
+	height: 624px;
+}
+
+.home-body-box {
+	width: 768px;
+}
+
+#home-description {
+	position: absolute;
+	top: 136px;
+	left: 10px;
+}
+
+#home-sample {
+	position: absolute;
+	top: 6px;
+	right: 10px;
+}
+
+#home-additional {
+	height: 600px;
+}

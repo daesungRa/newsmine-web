@@ -1,5 +1,6 @@
 /*
  * Default style
+ * made by Daesung Ra (daesungra@gmail.com)
  */
 
 html, body {
@@ -17,7 +18,7 @@ html, body {
  */
 
 .header {
-	padding: 18px 18px 22px 18px;
+	padding: 18px 18px 20px 18px;
 	background-color: #2F3F3F;
 }
 
@@ -36,9 +37,17 @@ html, body {
     font-weight: 600;
 }
 
-/*
- * Home style
- */
+#header-title {
+	width: 58.333333%;
+	float: left;
+	padding-left: 20px;
+}
+
+#header-title-nav {
+	width: 41.666667%;
+	float: right;
+	padding-right: 20px;
+}
 
 .header-nav {
 	width: 100%;
@@ -51,26 +60,60 @@ html, body {
 	margin-left: 10px;
 }
 
+#header-nav-logged-in {
+	display: none;
+}
+
+/*
+ * Home style
+ */
+
 .newsmine-content {
-	height: 88%;
+	/* height: 88%; */
+}
+
+.home-content {
+	height: 100%;
+	background-color: #1F2F2F;
 }
 
 .home-body {
-	position: relative;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/images/home/city_home.jpg');
-	background-size: 100%;
-	background-repeat: no-repeat;
+	width: 100%;
+	text-align: center;
 	z-index: 1;
 }
 
-.home-body::after {
-	content: '';
-	position: absolute;
-    top: 0;
-    left: 0;
-	opacity: 0.5 !important;
-	filter: alpha(opacity=50);
-	z-index: -1;
+#home-body-upper {
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('/static/images/home/wall_style_home_04.jpg');
+	background-size: 100%;
+}
+
+#home-body-lower {
+	min-height: 480px;
+}
+
+.home-body-box {
+	position: relative;
+	display: inline-block;
+	margin-top: 90px;
+}
+
+#home-description {
+	font-size: 32px;
+	font-weight: 900;
+}
+
+#home-sample {
+	width: 280px;
+	height: 420px;
+	border: 1px solid #333;
+}
+
+#home-additional {
+	color: #fff;
+	text-align: center;
+	font-size: 24px;
+	font-weight: 900;
 }
 
 /*

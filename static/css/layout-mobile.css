@@ -1,0 +1,25 @@
+/*
+ * Common style for mobile
+ * made by Daesung Ra (daesungra@gmail.com)
+ */
+
+#home-body-upper {
+	height: 824px;
+}
+
+.home-body-box {
+	width: 100%;
+}
+
+#home-description {
+	display: inline-block;
+}
+
+#home-sample {
+	display: inline-block;
+	margin-top: 80px;
+}
+
+#home-additional {
+	height: 800px;
+}
