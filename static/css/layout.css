@@ -17,7 +17,7 @@ html, body {
  */
 
 .header {
-	padding: 18px 18px 22px 18px;
+	padding: 18px 18px 20px 18px;
 	background-color: #2F3F3F;
 }
 
@@ -36,10 +36,6 @@ html, body {
     font-weight: 600;
 }
 
-/*
- * Home style
- */
-
 .header-nav {
 	width: 100%;
 	text-align: right;
@@ -51,13 +47,28 @@ html, body {
 	margin-left: 10px;
 }
 
+#header-nav-logged-in {
+	display: none;
+}
+
+/*
+ * Home style
+ */
+
 .newsmine-content {
 	height: 88%;
 }
 
+.home-content {
+	height: 100%;
+	background-color: #1F2F2F;
+}
+
 .home-body {
 	position: relative;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/images/home/city_home.jpg');
+	max-width: 100%;
+	max-height: 624px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('/static/images/home/wall_style_home_04.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	z-index: 1;
@@ -71,6 +82,25 @@ html, body {
 	opacity: 0.5 !important;
 	filter: alpha(opacity=50);
 	z-index: -1;
+}
+
+.home-body-elem {
+	position: absolute;
+}
+
+#home-description {
+	top: 220px;
+	left: 200px;
+	font-size: 32px;
+	font-weight: 900;
+}
+
+#home-sample {
+	top: 100px;
+	right: 200px;
+	width: 280px;
+	height: 420px;
+	border: 1px solid #333;
 }
 
 /*
