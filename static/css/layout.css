@@ -58,6 +58,11 @@ html, body {
 
 .header-nav-item {
 	margin-left: 10px;
+	cursor: pointer;
+}
+
+.header-nav-item:hover {
+	color: #FFF8EC;
 }
 
 #header-nav-logged-in {
