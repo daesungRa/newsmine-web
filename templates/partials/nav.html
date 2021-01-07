@@ -1,12 +1,18 @@
 <div class="header-subtitle header-nav">
-    <div class="header-nav-box" id="header-nav-intro">
-        <span class="header-nav-item">체험하기</span>
-        <span class="header-nav-item" id="nav-item-login">로그인</span>
-        <span class="header-nav-item">회원가입</span>
-    </div>
-    <div class="header-nav-box" id="header-nav-logged-in">
-        <span class="header-nav-item">구독하기</span>
-        <span class="header-nav-item">계정관리</span>
-        <span class="header-nav-item">내 구독목록</span>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="header-nav-box" id="header-nav-logged-in">
+            <span class="header-nav-item">구독하기</span>
+            <span class="header-nav-item">내 구독목록</span>
+            <span class="header-nav-item">계정관리</span>
+            <span class="header-nav-item">
+                <a href="{% url 'users:logout' %}">로그아웃</a>
+            </span>
+        </div>
+    {% else %}
+        <div class="header-nav-box" id="header-nav-intro">
+            <span class="header-nav-item">체험하기</span>
+            <span class="header-nav-item" id="nav-item-login">로그인</span>
+            <span class="header-nav-item">회원가입</span>
+        </div>
+    {% endif %}
 </div>
