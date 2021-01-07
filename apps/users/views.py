@@ -1,12 +1,33 @@
 import json
 
 from django.views import View
+from django.views.generic import FormView
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.urls import reverse_lazy
+
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as django_login
+from django.contrib.auth import logout as django_logout
+
+from apps.users.forms import LoginForm
 
 
-class LoginView(View):
+class LoginView(FormView):
     """Custom Login View"""
-    def get(self, request):
-        form = 'ff'
-        return render(request, 'account/login.html', {'form': form})
+    template_name = 'account/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('core:home')
+
+    def form_valid(self, form):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            django_login(self.request, user)
+        return super().form_valid(form)
+
+
+def logout(request):
+    django_logout(request)
+    return redirect(reverse('core:home'))

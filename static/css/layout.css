@@ -22,25 +22,26 @@ html, body {
 	background-color: #2F3F3F;
 }
 
-.header a {
-    font-size: 24px;
-    font-weight: 900;
-    text-decoration: none;
-    color: #DEB887;
-}
-
-.header-subtitle {
+.header-subtitle, .header-subtitle a {
 	display: inline-block;
 	font-family: 'NanumSquare', sans-serif;
     color: #FFF8DC;
     font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
 }
 
 #header-title {
 	width: 58.333333%;
 	float: left;
 	padding-left: 20px;
+}
+
+#header-title a {
+    font-size: 24px;
+    font-weight: 900;
+    text-decoration: none;
+    color: #DEB887;
 }
 
 #header-title-nav {
@@ -61,12 +62,12 @@ html, body {
 	cursor: pointer;
 }
 
-.header-nav-item:hover {
+.header-nav-item:hover, .header-nav-item a:hover {
 	color: #FFF8EC;
 }
 
 #header-nav-logged-in {
-	display: none;
+	/* display: none; */
 }
 
 /*
