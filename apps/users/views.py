@@ -34,18 +34,18 @@ def logout(request):
 
 
 class SignUpView(FormView):
-    template_name = 'users/signup.html'
+    template_name = 'account/signup.html'
     form_class = SignUpForm
     success_url = reverse_lazy('core:home')
-    initial = {
-        'username': 'daesungra@gmail.com',
-        'first_name': 'Daesung',
-        'last_name': 'Ra',
-        'email': 'daesungra@gamil.com',
-    }
+    # initial = {
+    #     'username': 'daesungra@gmail.com',
+    #     'first_name': 'Daesung',
+    #     'last_name': 'Ra',
+    # }
 
     def form_valid(self, form):
         # create user after validation check
+        # username same as email form
         form.save()
 
         # login action
@@ -54,5 +54,5 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             django_login(self.request, user)
-        user.verify_username()
+        # user.verify_email()
         return super().form_valid(form)
