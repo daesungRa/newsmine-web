@@ -29,7 +29,7 @@ class SignUpForm(ModelForm):
 
     class Meta:
         model = UserModel
-        fields = ['username', 'first_name', 'last_name', 'email']
+        fields = ['username', 'first_name', 'last_name']
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -54,4 +54,5 @@ class SignUpForm(ModelForm):
         user = super().save(commit=False)
         user.username = username
         user.set_password(password)
+        user.email = username
         user.save()
