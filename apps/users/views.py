@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 
-from apps.users.forms import LoginForm
+from apps.users.forms import LoginForm, SignUpForm
 
 
 class LoginView(FormView):
@@ -31,3 +31,28 @@ class LoginView(FormView):
 def logout(request):
     django_logout(request)
     return redirect(reverse('core:home'))
+
+
+class SignUpView(FormView):
+    template_name = 'users/signup.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('core:home')
+    initial = {
+        'username': 'daesungra@gmail.com',
+        'first_name': 'Daesung',
+        'last_name': 'Ra',
+        'email': 'daesungra@gamil.com',
+    }
+
+    def form_valid(self, form):
+        # create user after validation check
+        form.save()
+
+        # login action
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            django_login(self.request, user)
+        user.verify_username()
+        return super().form_valid(form)
