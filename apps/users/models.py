@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 
-from django.db.models import CharField, ImageField, TextField, BooleanField
+from django.db.models import CharField, EmailField, ImageField, TextField, BooleanField
 from django.contrib.auth.models import AbstractUser
 
 
@@ -26,12 +26,19 @@ class User(AbstractUser):
         (LOGIN_KAKAO, 'Kakao')
     )
 
+    username = EmailField(
+        unique=True,
+        blank=False,
+        # help_text='Required. email form only.',
+        error_messages={'unique': 'A user with that username already exists.'},
+    )
+
     nickname = CharField(max_length=150, blank=True)
     bio = TextField(blank=True)
     profile_image = ImageField(upload_to='profile_image', blank=True)
 
     language = CharField(max_length=3, choices=LANG_CHOICES, default=LANG_KOR, blank=True)
-    superhost = BooleanField(default=False)
+    superuser = BooleanField(default=False)
 
     email_verified = BooleanField(default=False)
     email_secret = CharField(max_length=120, default='', blank=True)
