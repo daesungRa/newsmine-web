@@ -148,8 +148,8 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_FROM = ''
 
 DEFAULT_VARIABLES = {
-    'url': '#',
-    'title': 'Newsmine',
-    'description_kor': '나만의 뉴스를 정기적으로 받아보세요!',
-    'description_eng': 'Receive fantastic news-sets you want regularly!',
+    'url': CONFIG['VAL']['default.url'],
+    'title': CONFIG['VAL']['default.title'],
+    'description_kor': CONFIG['VAL']['default.description_kor'],
+    'description_eng': CONFIG['VAL']['default.description_eng'],
 }
