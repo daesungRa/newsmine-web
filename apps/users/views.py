@@ -15,7 +15,7 @@ from apps.users.forms import LoginForm, SignUpForm
 
 class LoginView(FormView):
     """Custom Login View"""
-    template_name = 'account/login.html'
+    template_name = 'accounts/login.html'
     form_class = LoginForm
     success_url = reverse_lazy('core:home')
 
@@ -34,7 +34,7 @@ def logout(request):
 
 
 class SignUpView(FormView):
-    template_name = 'account/signup.html'
+    template_name = 'accounts/signup.html'
     form_class = SignUpForm
     success_url = reverse_lazy('core:home')
     # initial = {
