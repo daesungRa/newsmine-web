@@ -19,6 +19,7 @@ class Config:
         self._sample_config = self._load_config(
             config_file.with_suffix(f'{config_file.suffix}.sample'))
 
+        # Compare version between yaml and yaml.sample
         assert self._check_version(self._config, self._sample_config)
 
     @staticmethod
