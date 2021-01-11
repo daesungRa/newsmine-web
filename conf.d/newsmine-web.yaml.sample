@@ -4,12 +4,27 @@
 
 VERSION: 0.0.2
 
-VAL:
-  django.secret-key:  # django secret key
-  default.url:  # project base url
-  default.title:  # title
-  default.description_kor:  # project description in kor
-  default.description_eng:  # project description in eng
+DJANGO:
+  secret-key:  # Django secret key
+
+HOST:
+  url:  # Project host url
+  title:  # Host title
+  description-kor:  # Project description in kor
+  description-eng:  # Project description in eng
+
+EMAIL:  # SMTP server host
+  host:
+  port:
+  from:
+  host-user:
+  host-password:
+
+SOCIAL:  # Social login info
+  github.id:  #
+  github.secret:  #
+  kakao.id:  #
+  kakao.secret:  #
 
 SETTING:
   debug:  # boolean value for debug mode
