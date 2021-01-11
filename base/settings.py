@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG['VAL']['django.secret-key']
+SECRET_KEY = CONFIG['DJANGO']['secret-key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = CONFIG['SETTING']['debug']
@@ -141,15 +141,15 @@ MEDIA_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'media/'
 
 # Email Configuration
-EMAIL_HOST = ''
-EMAIL_PORT = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_FROM = ''
+EMAIL_HOST = CONFIG['EMAIL']['host']
+EMAIL_PORT = CONFIG['EMAIL']['port']
+EMAIL_FROM = CONFIG['EMAIL']['from']
+EMAIL_HOST_USER = CONFIG['EMAIL']['host-user']
+EMAIL_HOST_PASSWORD = CONFIG['EMAIL']['host-password']
 
 DEFAULT_VARIABLES = {
-    'url': CONFIG['VAL']['default.url'],
-    'title': CONFIG['VAL']['default.title'],
-    'description_kor': CONFIG['VAL']['default.description_kor'],
-    'description_eng': CONFIG['VAL']['default.description_eng'],
+    'url': CONFIG['HOST']['url'],
+    'title': CONFIG['HOST']['title'],
+    'description_kor': CONFIG['HOST']['description-kor'],
+    'description_eng': CONFIG['HOST']['description-eng'],
 }
