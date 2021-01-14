@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 
+from apps.users.models import User as UserModel
 from apps.users.forms import LoginForm, SignUpForm
 
 
@@ -54,5 +55,18 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             django_login(self.request, user)
-        # user.verify_email()
+        user.verify_email()
         return super().form_valid(form)
+
+
+def complete_verification(request, key):
+    try:
+        user = UserModel.objects.get(email_secret=key)
+        user.email_verified = True
+        user.email_secret = ''
+        user.save()
+        # TODO: Add success message
+    except UserModel.DoesNotExist:
+        # TODO: Add error message
+        pass
+    return redirect(reverse('core:home'))
