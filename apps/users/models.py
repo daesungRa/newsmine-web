@@ -35,7 +35,8 @@ class User(AbstractUser):
 
     nickname = CharField(max_length=150, blank=True)
     bio = TextField(blank=True)
-    profile_image = ImageField(upload_to='profile_image', blank=True)
+    profile_image = ImageField(upload_to='profile_images', blank=True)
+    thumbnail_image = ImageField(upload_to='profile_images', blank=True)
 
     language = CharField(max_length=3, choices=LANG_CHOICES, default=LANG_KOR, blank=True)
     superuser = BooleanField(default=False)

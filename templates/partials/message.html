@@ -1,0 +1,24 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+    $(document).ready(function () {
+        {% if messages %}
+            {% for message in messages %}
+                let message = '{{ message }}';
+                if (message.includes('[SOCIAL-LOGIN]')) {
+                    $('#nav-item-login').trigger('click');
+                    setTimeout(function () { alert(message); }, 500);
+                };
+            {% endfor %}
+        {% endif %}
+    });
+</script>

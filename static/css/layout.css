@@ -155,3 +155,11 @@ html, body {
 .custom-tab {
     padding-left: 6px;
 }
+
+.alert {  /* messages alert style */
+	font-size: 14px;
+	font-weight: 600;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 0 !important;
+}

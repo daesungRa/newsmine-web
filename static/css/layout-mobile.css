@@ -3,6 +3,10 @@
  * made by Daesung Ra (daesungra@gmail.com)
  */
 
+.header-description {
+	display: none;
+}
+
 #home-body-upper {
 	height: 824px;
 }
