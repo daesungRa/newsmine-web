@@ -197,3 +197,7 @@ Dockerfile
 # config file
 *.yaml
 ./**/*.yaml
+
+# static files
+static/profile_images
+./static/profile_images
