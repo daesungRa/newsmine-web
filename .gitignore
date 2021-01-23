@@ -57,8 +57,8 @@ coverage.xml
 .pytest_cache/
 ./**/.pytest_cache/
 pytestdebug.log
-test/
-./**/test/
+test/dev_test/
+./**/dev_test/
 app_test.py
 ./**/app_test.py
 
