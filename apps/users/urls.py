@@ -12,5 +12,6 @@ urlpatterns = [
     path('login/kakao/callback', user_views.kakao_callback, name='kakao-callback'),
     path('logout', user_views.logout, name='logout'),
     path('signup', user_views.SignUpView.as_view(), name='signup'),
-    path('verify/<str:key>', user_views.complete_verification, name='complete-verification')
+    path('verify', user_views.wait_verification, name='wait-verification'),
+    path('verify/<str:key>', user_views.complete_verification, name='complete-verification'),
 ]
