@@ -3,11 +3,9 @@ import requests
 from datetime import datetime, timezone
 
 from django.views import View
-from django.views.generic import FormView
 from django.http import JsonResponse
 
 from django.shortcuts import render, redirect, reverse
-from django.urls import reverse_lazy
 from django.core.files.base import ContentFile
 
 from django.contrib import messages
@@ -49,6 +47,7 @@ class LoginView(View):
 
 def logout(request):
     django_logout(request)
+    messages.add_message(request, messages.INFO, 'Log out succeed.')
     return redirect(reverse('core:home'))
 
 

@@ -14,10 +14,13 @@ class LoginForm(Form):
         password = self.cleaned_data.get('password')
         try:
             user = UserModel.objects.get(username=username)
-            if user.check_password(password):
-                return self.cleaned_data
+            if user.login_method != UserModel.LOGIN_EMAIL:
+                self.add_error('username', ValidationError('This account can only be logged in with Social.'))
             else:
-                self.add_error('password', ValidationError('Password is wrong'))
+                if user.check_password(password):
+                    return self.cleaned_data
+                else:
+                    self.add_error('password', ValidationError('Password is wrong'))
         except UserModel.DoesNotExist as ne:
             self.add_error('username', ValidationError('User does not exist'))
 
