@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 
 from django.views import View
 from django.views.generic import FormView
+from django.http import JsonResponse
 
 from django.shortcuts import render, redirect, reverse
 from django.urls import reverse_lazy
@@ -47,29 +48,45 @@ def logout(request):
     return redirect(reverse('core:home'))
 
 
-class SignUpView(FormView):
-    template_name = 'accounts/signup.html'
-    form_class = SignUpForm
-    success_url = reverse_lazy('core:home')
-    # initial = {
-    #     'username': 'daesungra@gmail.com',
-    #     'first_name': 'Daesung',
-    #     'last_name': 'Ra',
-    # }
+# class SignUpView(FormView):
+#     template_name = 'accounts/signup.html'
+#     form_class = SignUpForm
+#     success_url = reverse_lazy('users:wait-verification')
+#
+#     def form_valid(self, form):
+#         # Create user after validation check
+#         # Username same as email form
+#         form.save()
+#
+#         # Checking saved user authentication
+#         username = form.cleaned_data.get('username')
+#         password = form.cleaned_data.get('password')
+#         user = authenticate(self.request, username=username, password=password)
+#         assert user is not None
+#         user.verify_email()
+#         return super().form_valid(form)
 
-    def form_valid(self, form):
-        # create user after validation check
-        # username same as email form
-        form.save()
 
-        # login action
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(self.request, username=username, password=password)
-        if user is not None:
-            django_login(self.request, user)
-        user.verify_email()
-        return super().form_valid(form)
+class SignUpView(View):
+    def get(self, request):
+        return render(request, 'accounts/signup.html', {'form': SignUpForm()})
+
+    def post(self, request):
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            assert user is not None
+            user.verify_email()
+            return JsonResponse(data={'redirect_url': f'{CONFIG["HOST"]["url"]}/users/verify'})
+        else:
+            return render(request, 'accounts/signup.html', {'form': form})
+
+
+def wait_verification(request):
+    return render(request, 'accounts/verify.html')
 
 
 def complete_verification(request, key):
@@ -78,6 +95,8 @@ def complete_verification(request, key):
         user.email_verified = True
         user.email_secret = ''
         user.save()
+        if user is not None:
+            django_login(request, user)
         # TODO: Add success message
     except UserModel.DoesNotExist:
         # TODO: Add error message
