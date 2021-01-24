@@ -4,8 +4,6 @@
  */
 
 html, body {
-    width: 100%;
-    height: 100%;
     font-size: 14px;
 }
 
@@ -18,14 +16,19 @@ html, body {
  */
 
 .header {
+	position: sticky;
+    top: 0;
 	padding: 18px 18px 20px 18px;
-	background-color: #2F3F3F;
+	background-color: #1F2F2F;
+	border-bottom: 1px solid #4c535b;
+    z-index: 99;
 }
 
 .header-subtitle, .header-subtitle a {
 	display: inline-block;
 	font-family: 'NanumSquare', sans-serif;
-    color: #FFF8DC;
+    /* color: #FFF8DC; */
+    color: #fff;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -79,10 +82,11 @@ html, body {
 }
 
 .home-content {
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
 	margin: 0px;
-	background-color: #1F2F2F;
+	/* background-color: #1F2F2F; */
+	background-color: #fff;
 }
 
 .home-body {
@@ -92,8 +96,9 @@ html, body {
 }
 
 #home-body-upper {
-	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('/static/images/home/wall_style_home_04.jpg');
+	color: #fff;
 	background-size: 100%;
+	background-color: #1F2F2F;
 }
 
 #home-body-lower {
@@ -108,13 +113,13 @@ html, body {
 
 #home-description {
 	font-size: 32px;
-	font-weight: 900;
+	/* font-weight: 900; */
 }
 
 #home-sample {
 	width: 280px;
 	height: 420px;
-	border: 1px solid #333;
+	border: 1px solid #fff;
 }
 
 #home-additional {
