@@ -90,17 +90,16 @@ function activateDefaultActions () {
 			data: contentForm.serialize(),
 			success: function (response) {
 				let toggle = false;
-				if (response.includes('/users/login')) {
+				if (typeof response == 'string' && response.includes('/users/login"')) {
 					let headerContents = '로그인';
 					let footerContents = {'confirm': '로그인', 'cancel': '취소'};
 					drawModal(response, headerContents, footerContents, toggle);
-				} else if (response.includes('/users/signup')) {
+				} else if (typeof response == 'string' && response.includes('/users/signup')) {
 					let headerContents = '회원가입';
 					let footerContents = {'confirm': '확인', 'cancel': '취소'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else {
-					$('#modal').modal('toggle');
-					window.location.href = '';
+					window.location.href = response.hasOwnProperty('redirect_url') ? response.redirect_url : '';
 				};
 			},
 			error: function (jqXHR) {
