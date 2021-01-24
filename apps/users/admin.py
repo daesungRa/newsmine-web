@@ -19,6 +19,7 @@ class CustomUserAdmin(UserAdmin):
                     'language',
                     'superuser',
                     'login_method',
+                    'email_verified',
                 ),
             }
         ),
