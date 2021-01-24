@@ -99,7 +99,7 @@ function activateDefaultActions () {
 					let footerContents = {'confirm': '확인', 'cancel': '취소'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else {
-					window.location.href = response.hasOwnProperty('redirect_url') ? response.redirect_url : '';
+					window.location.href = response.hasOwnProperty('redirect_uri') ? `${response.redirect_uri}` : '';
 				};
 			},
 			error: function (jqXHR) {

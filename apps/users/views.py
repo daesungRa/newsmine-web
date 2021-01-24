@@ -28,43 +28,28 @@ KAKAO_CLIENT_SECRET = CONFIG['SOCIAL']['kakao.secret']
 KAKAO_REDIRECT_URL = f'{CONFIG["HOST"]["url"]}/users/login/kakao/callback'
 
 
-class LoginView(FormView):
-    """Custom Login View"""
-    template_name = 'accounts/login.html'
-    form_class = LoginForm
-    success_url = reverse_lazy('core:home')
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'accounts/login.html', {'form': LoginForm()})
 
-    def form_valid(self, form):
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(self.request, username=username, password=password)
-        if user is not None:
-            django_login(self.request, user)
-        return super().form_valid(form)
+    def post(self, request):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                if user.login_method == 'email' and not user.email_verified:
+                    form.add_error('username', 'Please verify email first.')
+                else:
+                    django_login(self.request, user)
+                    return JsonResponse(data={'redirect_uri': ''})
+        return render(request, 'accounts/login.html', {'form': form})
 
 
 def logout(request):
     django_logout(request)
     return redirect(reverse('core:home'))
-
-
-# class SignUpView(FormView):
-#     template_name = 'accounts/signup.html'
-#     form_class = SignUpForm
-#     success_url = reverse_lazy('users:wait-verification')
-#
-#     def form_valid(self, form):
-#         # Create user after validation check
-#         # Username same as email form
-#         form.save()
-#
-#         # Checking saved user authentication
-#         username = form.cleaned_data.get('username')
-#         password = form.cleaned_data.get('password')
-#         user = authenticate(self.request, username=username, password=password)
-#         assert user is not None
-#         user.verify_email()
-#         return super().form_valid(form)
 
 
 class SignUpView(View):
@@ -80,7 +65,7 @@ class SignUpView(View):
             user = authenticate(request, username=username, password=password)
             assert user is not None
             user.verify_email()
-            return JsonResponse(data={'redirect_url': f'{CONFIG["HOST"]["url"]}/users/verify'})
+            return JsonResponse(data={'redirect_uri': 'users/verify'})
         else:
             return render(request, 'accounts/signup.html', {'form': form})
 
