@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'base.my_middleware.admin_restriction_middleware',  # 210125, Admin restriction middleware
 ]
 
 ROOT_URLCONF = 'base.urls'
