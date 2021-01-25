@@ -1,18 +1,25 @@
 <div class="header-subtitle header-nav">
-    {% if user.is_authenticated %}
-        <div class="header-nav-box" id="header-nav-logged-in">
-            <span class="header-nav-item">Subscribe</span>
-            <span class="header-nav-item">My subscriptions</span>
-            <span class="header-nav-item">Account</span>
-            <span class="header-nav-item">
-                <a href="{% url 'users:logout' %}">Logout</a>
-            </span>
+    <div id="header-nav-web">
+        {% if user.is_authenticated %}
+            <div class="header-nav-box" id="header-nav-logged-in">
+                <span class="header-nav-item">Subscribe</span>
+                <span class="header-nav-item">Subscriptions</span>
+                <span class="header-nav-item">Account</span>
+                <span class="header-nav-item">
+                    <a href="{% url 'users:logout' %}">Logout</a>
+                </span>
+            </div>
+        {% else %}
+            <div class="header-nav-box" id="header-nav-intro">
+                <span class="header-nav-item">Experience</span>
+                <span class="header-nav-item" id="nav-item-login">Login</span>
+                <span class="header-nav-item" id="nav-item-signup">Signup</span>
+            </div>
+        {% endif %}
+    </div>
+    <div id="header-nav-mobile">
+        <div id="menu-dropdown-bars">
+            <i class="fa fa-fw fa-bars" style="font-size: 18px;"></i>
         </div>
-    {% else %}
-        <div class="header-nav-box" id="header-nav-intro">
-            <span class="header-nav-item">Experience</span>
-            <span class="header-nav-item" id="nav-item-login">Login</span>
-            <span class="header-nav-item" id="nav-item-signup">Signup</span>
-        </div>
-    {% endif %}
+    </div>
 </div>

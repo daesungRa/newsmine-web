@@ -25,12 +25,12 @@ function activateModalActions () {
 			success: function (response) {
 				let toggle = false;
 				if (response.includes('/users/login')) {
-					let headerContents = `로그인 (${socialName}실패)`;
-					let footerContents = {'confirm': '로그인', 'cancel': '취소'};
+					let headerContents = `Login (${socialName}실패)`;
+					let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else if (response.includes('/users/signup')) {
-					let headerContents = '회원가입';
-					let footerContents = {'confirm': '확인', 'cancel': '취소'};
+					let headerContents = 'Sign Up';
+					let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else {
 					$('#modal').modal('toggle');
@@ -51,8 +51,8 @@ function activateDefaultActions () {
 			type: 'get',
 			url: '/users/login',
 			success: function (response) {
-				let headerContents = '로그인';
-				let footerContents = {'confirm': '로그인', 'cancel': '취소'};
+				let headerContents = 'Log In';
+				let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
 				let toggle = true;
 				drawModal(response, headerContents, footerContents, toggle);
 			},
@@ -67,8 +67,8 @@ function activateDefaultActions () {
 			type: 'get',
 			url: '/users/signup',
 			success: function (response) {
-				let headerContents = '회원가입';
-				let footerContents = {'confirm': '확인', 'cancel': '취소'};
+				let headerContents = 'Sign Up';
+				let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
 				let toggle = true;
 				drawModal(response, headerContents, footerContents, toggle);
 			},
@@ -91,12 +91,12 @@ function activateDefaultActions () {
 			success: function (response) {
 				let toggle = false;
 				if (typeof response == 'string' && response.includes('/users/login"')) {
-					let headerContents = '로그인';
-					let footerContents = {'confirm': '로그인', 'cancel': '취소'};
+					let headerContents = 'Log In';
+					let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else if (typeof response == 'string' && response.includes('/users/signup')) {
-					let headerContents = '회원가입';
-					let footerContents = {'confirm': '확인', 'cancel': '취소'};
+					let headerContents = 'Sign Up';
+					let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
 					drawModal(response, headerContents, footerContents, toggle);
 				} else {
 					window.location.href = response.hasOwnProperty('redirect_uri') ? `${response.redirect_uri}` : '';

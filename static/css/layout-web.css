@@ -7,6 +7,14 @@
 	display: inline-block;
 }
 
+#header-nav-web {
+	display: inline-block;
+}
+
+#header-nav-mobile {
+	display: none;
+}
+
 #home-body-upper {
 	height: 624px;
 }
