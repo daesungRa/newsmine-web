@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+    Subscriptions
+{% endblock page_title %}
+
+{% block content %}
+    <h2>Subscription list!!</h2>
+    <h4>{{ subscriptions }}</h4>
+<!--    <div class="row">-->
+<!--        <div class="col-lg-3"></div>-->
+<!--        <div class="col-lg-6">-->
+<!--            <div style="margin: 60px 0 60px 0;">-->
+<!--                <h1>Halo!</h1>-->
+<!--            </div>-->
+
+<!--            {{ now }}-->
+
+<!--            {% if rooms %}-->
+<!--                <hr/>-->
+<!--                {% for room in rooms %}-->
+<!--                    <a href="{% url 'rooms:detail' room.pk %}">-->
+<!--                        <h3>{{ room }}</h3>-->
+<!--                        <h4>{{ room.host }}</h4>-->
+<!--                    </a>-->
+<!--                    <hr/>-->
+<!--                {% endfor %}-->
+<!--            {% else %}-->
+<!--                <h3>There is no page!</h3>-->
+<!--            {% endif %}-->
+<!--            <h5>-->
+<!--                {% if page_obj.has_previous %}-->
+<!--                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>-->
+<!--                {% endif %}-->
+<!--                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}-->
+<!--                {% if page_obj.has_next %}-->
+<!--                    <a href="?page={{ page_obj.next_page_number }}">Next</a>-->
+<!--                {% endif %}-->
+<!--            </h5>-->
+<!--            &lt;!&ndash;-->
+<!--            {% for page_num in page_range %}-->
+<!--                <a href="?page={{ page_num }}">{{ page_num }}</a>-->
+<!--            {% endfor %}-->
+<!--            &ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="col-lg-3"></div>-->
+<!--    </div>-->
+{% endblock content %}

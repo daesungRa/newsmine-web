@@ -17,27 +17,21 @@ class SubscriptionDetail(DetailView):
     template_name = 'subscriptions/detail.html'
 
 
-def subscriptions_by_owner(request):
+def subscription_list(request):
     page = request.GET.get('page', 1)
     page_size = request.GET.get('page_size', 5)
-    owner_id = request.GET.get('owner_id', None)
-    try:
-        owner_id = owner_id and int(owner_id)
-    except ValueError:
-        # TODO: Add error logger or messages
-        owner_id = None
 
-    # Filter by inserted owner or request user
-    subscriptions = []
-    if owner_id:
-        subscriptions = SubscriptionModel.objects.filter(owner=owner_id)
-    elif not isinstance(request.user, AnonymousUser):
+    # Get subscriptions by request user info
+    if isinstance(request.user, AnonymousUser):
+        messages.add_message(request, messages.INFO, 'Please log in first.')
+        return redirect(reverse('core:home'))
+    else:
         subscriptions = SubscriptionModel.objects.filter(owner=request.user.id)
 
     if not subscriptions:
         messages.add_message(request, messages.INFO, 'Subscription does not exist.')
-        return redirect(reverse('core:home'))
     else:
         # TODO: Add returning logic of subscriptions by page
         paginator = Paginator(subscriptions, page_size)
         subscription_page = paginator.page(int(page))
+    return render(request, 'apps/subscriptions/list.html', {'subscriptions': list(subscriptions)})
