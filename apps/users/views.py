@@ -28,7 +28,7 @@ KAKAO_REDIRECT_URL = f'{CONFIG["HOST"]["url"]}/users/login/kakao/callback'
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'accounts/login.html', {'form': LoginForm()})
+        return render(request, 'apps/users/login.html', {'form': LoginForm()})
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -42,7 +42,7 @@ class LoginView(View):
                 else:
                     django_login(self.request, user)
                     return JsonResponse(data={'redirect_uri': ''})
-        return render(request, 'accounts/login.html', {'form': form})
+        return render(request, 'apps/users/login.html', {'form': form})
 
 
 def logout(request):
@@ -53,7 +53,7 @@ def logout(request):
 
 class SignUpView(View):
     def get(self, request):
-        return render(request, 'accounts/signup.html', {'form': SignUpForm()})
+        return render(request, 'apps/users/signup.html', {'form': SignUpForm()})
 
     def post(self, request):
         form = SignUpForm(request.POST)
@@ -66,11 +66,11 @@ class SignUpView(View):
             user.verify_email()
             return JsonResponse(data={'redirect_uri': 'users/verify'})
         else:
-            return render(request, 'accounts/signup.html', {'form': form})
+            return render(request, 'apps/users/signup.html', {'form': form})
 
 
 def wait_verification(request):
-    return render(request, 'accounts/verify.html')
+    return render(request, 'apps/users/verify.html')
 
 
 def complete_verification(request, key):
