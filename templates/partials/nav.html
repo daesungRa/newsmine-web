@@ -1,19 +1,41 @@
+{% load static %}
 <div class="header-subtitle header-nav">
     <div id="header-nav-web">
         {% if user.is_authenticated %}
             <div class="header-nav-box" id="header-nav-logged-in">
-                <span class="header-nav-item">Subscribe</span>
-                <span class="header-nav-item">Subscriptions</span>
-                <span class="header-nav-item">Account</span>
-                <span class="header-nav-item">
-                    <a href="{% url 'users:logout' %}">Logout</a>
-                </span>
+                <div class="dropdown header-nav-item dropdown-user-box">
+                    <div class="badge badge-primary dropdown-toggle"
+                         id="btn-dropdown-menu-user"
+                         data-toggle="dropdown"
+                         aria-haspopup="true"
+                         aria-expanded="false">
+                        {% if user.profile_image %}
+                            <img class="label-image" src="{% static 'images/users/default.png' %}" />
+                        {% else %}
+                            <img class="label-image" src="{% static 'images/users/default.png' %}" />
+                        {% endif %}
+                        {% if user.last_name %}
+                            <span class="label-item">{{ user.last_name | title }} {{ user.first_name | title }}</span>
+                        {% elif user.nickname %}
+                            <span class="label-item">{{ user.nickname | title }}</span>
+                        {% else %}
+                            <span class="label-item">No Name</span>
+                        {% endif %}
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn-dropdown-menu-user">
+                        <!-- <a class="dropdown-item" href="#">Subscribe</a> -->
+                        <a class="dropdown-item" href="{% url 'subscriptions:list' %}">Subscriptions</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Account</a>
+                        <a class="dropdown-item" href="{% url 'users:logout' %}">Logout</a>
+                    </div>
+                </div>
             </div>
         {% else %}
             <div class="header-nav-box" id="header-nav-intro">
-                <span class="header-nav-item">Experience</span>
-                <span class="header-nav-item" id="nav-item-login">Login</span>
-                <span class="header-nav-item" id="nav-item-signup">Signup</span>
+                <div class="header-nav-item">Experience</div>
+                <div class="header-nav-item" id="nav-item-login">Login</div>
+                <div class="header-nav-item" id="nav-item-signup">Signup</div>
             </div>
         {% endif %}
     </div>
