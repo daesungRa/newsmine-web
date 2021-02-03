@@ -18,13 +18,13 @@ html, body {
 .header {
 	position: sticky;
     top: 0;
-	padding: 18px 18px 20px 18px;
+	padding: 18px;
 	background-color: #1F2F2F;
 	border-bottom: 1px solid #4c535b;
     z-index: 99;
 }
 
-.header-subtitle, .header-subtitle a {
+.header-subtitle {
 	display: inline-block;
 	font-family: 'NanumSquare', sans-serif;
     /* color: #FFF8DC; */
@@ -57,11 +57,15 @@ html, body {
 	width: 100%;
 	text-align: right;
 	font-size: 14px;
-	padding-top: 11px;
+}
+
+.header-nav #header-nav-intro {
+	margin-top: 5px;
 }
 
 .header-nav-item {
-	margin-left: 10px;
+	display: inline-block;
+	margin: 3px 0 0 10px;
 	cursor: pointer;
 }
 
@@ -71,6 +75,23 @@ html, body {
 
 #header-nav-logged-in {
 	/* display: none; */
+}
+
+.header-nav-item.dropdown-user-box {
+	display: inline-block;
+}
+
+.header-nav-item.dropdown-user-box .dropdown-toggle {
+	padding: 5px 8px 5px 8px;
+}
+
+.header-nav-item.dropdown-user-box .label-image {
+	width: 25px;
+    border-radius: 15px;
+}
+
+.header-nav-item.dropdown-user-box .label-item {
+	margin: 0 3px 0 5px;
 }
 
 /*

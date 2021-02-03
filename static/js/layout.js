@@ -77,6 +77,14 @@ function activateDefaultActions () {
 			},
 		});
 	});
+	/* Toggle dropdown menu active */
+	$('.dropdown-menu .dropdown-item').on('mouseover', function () {
+		$(this).parent().find('.dropdown-item').removeClass('active');
+		$(this).addClass('active');
+	});
+	$('.dropdown-menu .dropdown-item').on('mouseout', function () {
+		$(this).parent().find('.dropdown-item').removeClass('active');
+	});
 	/* Submit modal form action */
 	$('#modal-footer-btn-confirm').on('click', function (event) {
 		event.preventDefault();
