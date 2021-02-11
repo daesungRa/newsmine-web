@@ -6,7 +6,15 @@
 
 {% block content %}
     <h2>Subscription list!!</h2>
+    <div>
+        <button class="btn btn-md btn-success draw-modal-component"
+                id="create-new-subscription">
+            New Subscription
+        </button>
+    </div>
     <h4>{{ subscriptions }}</h4>
+
+    {% include "partials/modal_component.html" %}
 <!--    <div class="row">-->
 <!--        <div class="col-lg-3"></div>-->
 <!--        <div class="col-lg-6">-->
