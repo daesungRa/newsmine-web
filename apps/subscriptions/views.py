@@ -34,4 +34,7 @@ def subscription_list(request):
         # TODO: Add returning logic of subscriptions by page
         paginator = Paginator(subscriptions, page_size)
         subscription_page = paginator.page(int(page))
-    return render(request, 'apps/subscriptions/list.html', {'subscriptions': list(subscriptions)})
+    return render(request, 'apps/subscriptions/list.html', {
+        'context': 'subscriptions',
+        'subscriptions': list(subscriptions)
+    })
