@@ -1,4 +1,13 @@
-function drawModal (modalForm, headerContents, footerContents, toggle) {
+/*
+ * layout.js (ver. 0.0.1)
+ * => Made by Ra Daesung (daesungra@gmail.com)
+ * => Created at '2021-02-11 KST'
+ * => Updated at '2021-02-11 KST'
+ * => This js component was created to activate default functions
+ *    of drawing home page and user login, logout, signup, etc.
+ */
+
+function drawModalUsers (modalForm, headerContents, footerContents, toggle) {
 	const modal = $('#modal');
 	// Draw contents to modal
 	modal.find('.modal-title').html(headerContents);
@@ -9,10 +18,10 @@ function drawModal (modalForm, headerContents, footerContents, toggle) {
 	if (typeof toggle === 'boolean' && toggle) {
 		modal.modal('toggle');
 	};
-	// activateModalActions();
+	// activateModalUsersActions();
 };
 
-function activateModalActions () {
+function activateModalUsersActions () {
 	/* Try social login(github, kakao) */
 	$('.a-social-login').on('click', function (event) {
 		event.preventDefault();
@@ -27,11 +36,11 @@ function activateModalActions () {
 				if (response.includes('/users/login')) {
 					let headerContents = `Login (${socialName}실패)`;
 					let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
-					drawModal(response, headerContents, footerContents, toggle);
+					drawModalUsers(response, headerContents, footerContents, toggle);
 				} else if (response.includes('/users/signup')) {
 					let headerContents = 'Sign Up';
 					let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
-					drawModal(response, headerContents, footerContents, toggle);
+					drawModalUsers(response, headerContents, footerContents, toggle);
 				} else {
 					$('#modal').modal('toggle');
 					window.location.href = '';
@@ -54,7 +63,7 @@ function activateDefaultActions () {
 				let headerContents = 'Log In';
 				let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
 				let toggle = true;
-				drawModal(response, headerContents, footerContents, toggle);
+				drawModalUsers(response, headerContents, footerContents, toggle);
 			},
 			error: function (jqXHR) {
 				console.log(jqXHR);
@@ -70,7 +79,7 @@ function activateDefaultActions () {
 				let headerContents = 'Sign Up';
 				let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
 				let toggle = true;
-				drawModal(response, headerContents, footerContents, toggle);
+				drawModalUsers(response, headerContents, footerContents, toggle);
 			},
 			error: function (jqXHR) {
 				console.log(jqXHR);
@@ -86,7 +95,7 @@ function activateDefaultActions () {
 		$(this).parent().find('.dropdown-item').removeClass('active');
 	});
 	/* Submit modal form action */
-	$('#modal-footer-btn-confirm').on('click', function (event) {
+	$('#modal #modal-footer-btn-confirm').on('click', function (event) {
 		event.preventDefault();
 		event.stopPropagation();
 
@@ -101,11 +110,11 @@ function activateDefaultActions () {
 				if (typeof response == 'string' && response.includes('/users/login"')) {
 					let headerContents = 'Log In';
 					let footerContents = {'confirm': 'Login', 'cancel': 'Cancel'};
-					drawModal(response, headerContents, footerContents, toggle);
+					drawModalUsers(response, headerContents, footerContents, toggle);
 				} else if (typeof response == 'string' && response.includes('/users/signup')) {
 					let headerContents = 'Sign Up';
 					let footerContents = {'confirm': 'Confirm', 'cancel': 'Cancel'};
-					drawModal(response, headerContents, footerContents, toggle);
+					drawModalUsers(response, headerContents, footerContents, toggle);
 				} else {
 					window.location.href = response.hasOwnProperty('redirect_uri') ? `${response.redirect_uri}` : '';
 				};
@@ -116,7 +125,3 @@ function activateDefaultActions () {
 		});
 	});
 };
-
-$(document).ready(function () {
-	activateDefaultActions();
-});

@@ -41,6 +41,7 @@
               href="{% static 'css/layout-mobile.css' %}">
         <!-- javascript -->
         <script src="{% static 'js/layout.js' %}"></script>
+        <script src="{% static 'js/component.js' %}"></script>
 
         <title>Newsmine: {% block page_title %}{% endblock page_title %}</title>
     </head>
@@ -53,8 +54,15 @@
             {% block content %}{% endblock %}
         </div>
 
-        {% include "partials/modal.html" %}
+        {% include "partials/modal_users.html" %}
 
         {% include "partials/footer.html" %}
     </body>
+
+    <script>
+        $(document).ready(function () {
+            activateDefaultActions();
+            activateComponentActions();
+        });
+    </script>
 </html>
