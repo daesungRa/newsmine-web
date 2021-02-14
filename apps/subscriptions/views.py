@@ -3,18 +3,15 @@ from datetime import datetime, timezone
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
+from django.http import JsonResponse
 
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import DetailView, View
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
-from apps.subscriptions.models import Subscription as SubscriptionModel
 from django.contrib.auth.models import AnonymousUser
+from apps.subscriptions.models import Subscription as SubscriptionModel
 
-
-class SubscriptionDetail(DetailView):
-    """Subscription Detail"""
-    model = SubscriptionModel
-    template_name = 'subscriptions/detail.html'
+from apps.subscriptions.forms import SubscriptionForm
 
 
 def subscription_list(request):
@@ -38,3 +35,28 @@ def subscription_list(request):
         'context': 'subscriptions',
         'subscriptions': list(subscriptions)
     })
+
+
+class SubscriptionDetail(DetailView):
+    """
+    Subscription Detail.
+    Instead of SubscriptionView's GET method.
+    """
+    model = SubscriptionModel
+    template_name = 'apps/subscriptions/detail.html'
+
+
+class SubscriptionView(View):
+    def post(self, request):
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Return json response for modal
+            return JsonResponse(data={'redirect_uri': 'subscriptions'})
+        return render(request, 'apps/subscriptions/detail.html', {'form': form})
+
+    def put(self, request):
+        pass
+
+    def delete(self, request):
+        pass
